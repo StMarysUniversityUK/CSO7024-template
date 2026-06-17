@@ -1,0 +1,9 @@
+---
+# roles/web/handlers/main.yml — handlers run once, at the end of the play, and
+# only when a task notifies them. This is how Ansible avoids restarting a
+# service on every run: the restart happens only when the page actually changed.
+
+- name: Restart nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

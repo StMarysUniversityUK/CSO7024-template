@@ -1,0 +1,5 @@
+# Runtime dependencies for the shared application.
+# The app uses only the Python standard library, so this file is intentionally
+# minimal. pytest is pinned here because the Week 3 lab installs it to run the
+# test suite inside the pipeline.
+pytest==8.*
