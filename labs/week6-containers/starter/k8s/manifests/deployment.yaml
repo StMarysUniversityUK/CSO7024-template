@@ -1,0 +1,49 @@
+# deployment.yaml — a Deployment for the shared application (lab 6.3).
+# Fill in the TODO values, then `kubectl apply -f manifests/`.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cso7024-app
+  labels:
+    app: cso7024-app
+spec:
+  # TODO (Step 3): run three replicas so a rolling update can proceed gradually.
+  replicas: 1 # TODO: set to 3
+
+  selector:
+    matchLabels:
+      app: cso7024-app
+
+  template:
+    metadata:
+      labels:
+        app: cso7024-app
+    spec:
+      containers:
+        - name: app
+          # The image you pushed to the local registry in lab 6.1.
+          # In lab 6.3 you build :0.3 and roll it out over this one.
+          image: localhost:5000/cso7024-app:0.2
+          ports:
+            - containerPort: 8000
+
+          # TODO (Step 3): take the PORT value from the ConfigMap instead of
+          # hard-coding it, using envFrom or a valueFrom: configMapKeyRef.
+          # envFrom:
+          #   - configMapRef:
+          #       name: cso7024-app-config
+
+          # Readiness and liveness probes use the app's /health endpoint.
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10

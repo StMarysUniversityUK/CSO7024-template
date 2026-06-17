@@ -1,0 +1,25 @@
+# service.yaml — exposes the Deployment inside the cluster (lab 6.3).
+# Fill in the TODO values.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cso7024-app
+  labels:
+    app: cso7024-app
+spec:
+  # A ClusterIP service is reachable inside the cluster; the brief uses
+  # `kubectl port-forward` to reach it from your machine.
+  type: ClusterIP
+
+  # TODO (Step 4): select the pods this service routes to. The selector must
+  # match the pod labels in deployment.yaml.
+  selector:
+    app: cso7024-app # TODO: confirm this matches the Deployment's pod labels
+
+  ports:
+    - name: http
+      # The port the service is reached on inside the cluster.
+      port: 80
+      # TODO (Step 4): the container port to forward to (the app listens on 8000).
+      targetPort: 8000

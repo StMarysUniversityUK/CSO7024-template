@@ -1,0 +1,26 @@
+---
+# site.yml — the play that configures every web host.
+#
+# For lab 5.3 this is mostly complete: it applies the `web` role to the
+# web_servers group. You extend it as the brief describes:
+#   - add `vars_files: [vars/secrets.yml]` so secrets come from Ansible Vault
+#   - make sure the template uses the secret (see roles/web/templates/index.html.j2)
+#
+# Run a dry run first:
+#   ansible-playbook -i inventory/inventory.ini site.yml --ask-vault-pass --check --diff
+# Then for real:
+#   ansible-playbook -i inventory/inventory.ini site.yml --ask-vault-pass
+
+- name: Configure web servers
+  hosts: web_servers
+  become: true
+
+  # TODO (lab 5.3, Step 5): load vault-encrypted variables here, for example:
+  # vars_files:
+  #   - vars/secrets.yml
+
+  vars:
+    site_title: "CSO7024 Integrated Pipeline"
+
+  roles:
+    - web
