@@ -19,7 +19,7 @@ and fill in the `TODO` markers, not to write everything from scratch.
 - `terraform/` is a Docker-provider configuration that creates three host containers and
   writes its outputs to `../ansible/inventory/terraform_outputs.json`.
 - `ansible/site.yml` and the `web` role install nginx on each host.
-- `scripts/generate_inventory.py` turns the Terraform outputs into
+- `ansible/scripts/generate_inventory.py` turns the Terraform outputs into
   `ansible/inventory/inventory.ini`.
 - `tests/smoke_test.py` checks that every host responds.
 - `.github/workflows/deploy.yml` orchestrates the whole sequence and contains the
