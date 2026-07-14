@@ -47,21 +47,8 @@ jobs:
           name: test-report
           path: report.xml
 
-  # TODO (3.3): add a "package" job that needs: [test], builds a wheel with
-  #             `python -m build --wheel`, and uploads dist/*.whl as an artefact.
-  # package:
-  #   needs: [test]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-python@v5
-  #       with:
-  #         python-version: "3.12"
-  #     - name: Build wheel
-  #       run: |
-  #         pip install build
-  #         python -m build --wheel app
-  #     - uses: actions/upload-artifact@v4
-  #       with:
-  #         name: app-wheel
-  #         path: app/dist/*.whl
+  # TODO (3.3): add a third job called "package" that runs only after the tests pass.
+  #   - give it   needs: [test]   and   runs-on: ubuntu-latest
+  #   - check out the code and set up Python 3.12 (as the jobs above do)
+  #   - install the build tool, then build a wheel from the app: python -m build --wheel app
+  #   - upload the resulting app/dist/*.whl as an artefact
