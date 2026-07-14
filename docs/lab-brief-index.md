@@ -11,13 +11,13 @@ Every hands-on lab in CSO7024 DevOps, in order. Each brief is a standalone docum
 | 2.3 | Rebase, Cherry-Pick and a Pull Request | 2 | 3 | 40 min | WLO2, WLO4 | Inlined in Week 2 content |
 | 3.2 | Design and Write Your First CI Pipeline | 3 | 2 | 45 min | WLO2 | "the lab brief contains a starter template" (Week 3, Lesson 2) |
 | 3.3 | Configure, Break and Fix a Real Pipeline | 3 | 3 | 45 min | WLO3 | Inlined in Week 3 content (Do (Lab): Configure, Break and Fix) |
-| 4.2 | Your First Terraform Configuration | 4 | 2 | 45 min | WLO2 | `lab brief: 4.2 Lab: Your First Terraform Configuration.md` |
-| 4.3 | Remote State, Environments and Drift | 4 | 3 | 45 min | WLO3 | `Lab brief: 4.3 Lab: Remote State, Workspaces and Drift.md` |
-| 5.2 | Your First Ansible Playbook | 5 | 2 | 45 min | WLO2 | `lab brief: 5.2 Lab: Your First Ansible Playbook.md` |
-| 5.3 | An Integrated Provision-then-Configure Pipeline | 5 | 3 | 45 min | WLO3 | `lab brief: 5.3 Lab: An Integrated Provision-then-Configure Pipeline.md` |
-| 6.1 | Your First Dockerfile | 6 | 1 | 45 min | WLO2 | `lab brief: 6.1 Lab: Your First Dockerfile.md` |
-| 6.2 | A Multi-Container Deployment with Docker Compose | 6 | 2 | 45 min | WLO2 | `lab brief: 6.2 Lab: A Multi-Container Deployment with Docker Compose.md` |
-| 6.3 | Deploy to Kubernetes | 6 | 3 | 45 min | WLO3 | `lab brief: 6.3 Lab: Deploy to Kubernetes.md` |
+| 4.2 | Your First Terraform Configuration | 4 | 2 | 45 min | WLO2 | `labs/week4-iac/4.2-lab-your-first-terraform-configuration.md` |
+| 4.3 | Remote State, Environments and Drift | 4 | 3 | 45 min | WLO3 | `labs/week4-iac/4.3-lab-remote-state-environments-and-drift.md` |
+| 5.2 | Your First Ansible Playbook | 5 | 2 | 45 min | WLO2 | `labs/week5-config-mgmt/5.2-lab-your-first-ansible-playbook.md` |
+| 5.3 | An Integrated Provision-then-Configure Pipeline | 5 | 3 | 45 min | WLO3 | `labs/week5-config-mgmt/5.3-lab-an-integrated-provision-then-configure-pipeline.md` |
+| 6.1 | Your First Dockerfile | 6 | 1 | 45 min | WLO2 | `labs/week6-containers/6.1-lab-your-first-dockerfile.md` |
+| 6.2 | A Multi-Container Deployment with Docker Compose | 6 | 2 | 45 min | WLO2 | `labs/week6-containers/6.2-lab-a-multi-container-deployment-with-docker-compose.md` |
+| 6.3 | Deploy to Kubernetes | 6 | 3 | 45 min | WLO3 | `labs/week6-containers/6.3-lab-deploy-to-kubernetes.md` |
 
 ## Notes
 
