@@ -1,0 +1,67 @@
+# Starter Continuous Integration workflow for labs 3.2 and 3.3.
+#
+# This is a TEMPLATE. Search for "TODO" and complete each one.
+# Action versions are pinned to a major tag for reproducibility. Action
+# versions drift over time, so check each action's repository for its current
+# major version as part of lab 3.3.
+
+name: CI
+
+on:
+  push:
+    branches: ["**"]          # TODO (3.2): confirm this triggers on every branch
+  pull_request:
+    branches: [main]          # TODO (3.2): confirm this triggers on PRs into main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # TODO (3.2): cache pip dependencies, keyed on a hash of requirements.txt.
+      # Hint: use actions/cache@v4 with path ~/.cache/pip and
+      #       key: pip-${{ hashFiles('**/requirements.txt') }}
+      - name: Install dev dependencies
+        run: pip install -r app/requirements-dev.txt
+      - name: Lint
+        run: ruff check .       # TODO (3.2): must fail the pipeline on any error (ruff does this by default)
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r app/requirements.txt   # pytest is declared here, so this is all the test job needs
+      - name: Run tests
+        run: pytest -v app --junitxml=report.xml   # TODO (3.2): run pytest with -v
+      - name: Upload test report
+        uses: actions/upload-artifact@v4           # TODO (3.2): upload the test report as an artefact
+        if: always()
+        with:
+          name: test-report
+          path: report.xml
+
+  # TODO (3.3): add a "package" job that needs: [test], builds a wheel with
+  #             `python -m build --wheel`, and uploads dist/*.whl as an artefact.
+  # package:
+  #   needs: [test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.12"
+  #     - name: Build wheel
+  #       run: |
+  #         pip install build
+  #         python -m build --wheel app
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         name: app-wheel
+  #         path: app/dist/*.whl
