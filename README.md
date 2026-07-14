@@ -56,7 +56,7 @@ Week 6  Containers     containerise with Docker, orchestrate with Kubernetes
 
 ## Working conventions
 
-- Each week's lab uses a working directory named `~/devops-weekN` (for example `~/devops-week4`). The briefs assume that layout.
+- From Week 4 onward, each lab uses a working directory named `~/devops-weekN` (for example `~/devops-week4`) and those briefs assume that layout. The Week 2 and Week 3 labs instead work in a Git repository you control (see their briefs).
 - The shared application carries rising version numbers as it evolves. Week 3 packages it as a Python wheel at version `0.1.0`. Week 6 containerises it: the image is tagged `cso7024-app:0.2` (Lessons 1 and 2) and then `cso7024-app:0.3` for the rolling update in Lesson 3.
 - Secrets never go into Git. Every directory that needs one ships a `.env.example`; you copy it to `.env`, which is already listed in `.gitignore`.
 - Lab work is individual and not submitted for grading, with one exception: the Week 3 pipeline is the foundation of Assessment 2. Keep screenshots of completed labs in your ePortfolio on Canvas.
