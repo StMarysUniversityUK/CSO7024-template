@@ -1,0 +1,74 @@
+# Starter orchestration workflow for lab 5.3, the integrated
+# provision-then-configure pipeline.
+#
+# This is a TEMPLATE. Each step that does real work currently runs an
+# `echo "TODO: ..."` placeholder. Replace every placeholder with the real
+# command as the brief describes, then push and watch the workflow run.
+#
+# The vault password comes from a repository secret named ANSIBLE_VAULT_PASSWORD
+# (Settings -> Secrets and variables -> Actions).
+#
+# The working directories below assume the starter's contents sit at the root of
+# your repository, so terraform/ and ansible/ are top-level folders (the layout
+# the brief sets up in ~/devops-week5). Action versions are pinned to a major
+# tag; verify the current major of each as good practice.
+
+name: Integrated provision-then-configure
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      # TODO (Step 7): initialise and apply the Terraform configuration.
+      # Hint: run in the terraform/ directory and pass -auto-approve so the
+      # workflow does not wait for interactive confirmation.
+      - name: Terraform apply
+        working-directory: terraform
+        run: |
+          echo "TODO: terraform init"
+          echo "TODO: terraform apply -auto-approve"
+
+      # TODO (Step 7): generate the inventory from the Terraform outputs.
+      # Hint: run scripts/generate_inventory.py from the ansible/ directory.
+      - name: Generate inventory
+        working-directory: ansible
+        run: |
+          echo "TODO: python scripts/generate_inventory.py"
+
+      # TODO (Step 7): run the playbook, supplying the vault password from the
+      # ANSIBLE_VAULT_PASSWORD secret. Hint: write the secret to a file and pass
+      # --vault-password-file, or point Ansible at it another way.
+      - name: Run Ansible
+        working-directory: ansible
+        env:
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+        run: |
+          echo "TODO: write the vault password to a file"
+          echo "TODO: ansible-playbook -i inventory/inventory.ini site.yml --vault-password-file <file>"
+
+      # TODO (Stretch goal): fail the job if any host fails the smoke test.
+      # Hint: smoke_test.py already exits non-zero on failure, so just run it.
+      - name: Smoke test
+        working-directory: ansible
+        run: |
+          echo "TODO: python ../tests/smoke_test.py"
