@@ -23,7 +23,9 @@ and fill in the `TODO` markers, not to write everything from scratch.
   `ansible/inventory/inventory.ini`.
 - `tests/smoke_test.py` checks that every host responds.
 - `.github/workflows/deploy.yml` orchestrates the whole sequence and contains the
-  `TODO` markers you complete.
+  `TODO` markers you complete. GitHub Actions only runs it when it sits at
+  `.github/workflows/deploy.yml` at the **root** of the repository, so
+  if its not already there, move it when you assemble your working copy.
 
 Everything runs locally through Docker: no cloud account is required.
 
